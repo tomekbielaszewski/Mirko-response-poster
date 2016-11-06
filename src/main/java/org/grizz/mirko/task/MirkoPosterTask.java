@@ -19,13 +19,16 @@ public class MirkoPosterTask implements Runnable {
 
     public void run() {
         List<PlayerResponse> responses = getResponses();
-        send(responses);
-        save(responses);
+
+        if(!responses.isEmpty()) {
+            send(responses);
+            save(responses);
+        }
     }
 
     private List<PlayerResponse> getResponses() {
         log.info("Getting responses");
-        return responseRepository.findBySentOrderByTimestampAsc(false);
+        return responseRepository.findBySent(false);
     }
 
     private void send(List<PlayerResponse> responses) {

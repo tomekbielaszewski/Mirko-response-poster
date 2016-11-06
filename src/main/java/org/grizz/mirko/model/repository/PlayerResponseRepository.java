@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface PlayerResponseRepository extends MongoRepository<PlayerResponse, String> {
-    List<PlayerResponse> findBySentOrderByTimestampAsc(boolean sent);
+    List<PlayerResponse> findBySent(boolean sent);
 }

@@ -35,6 +35,7 @@ public class RefreshableSession {
         for (int i = 0; i < maxAttempts; i++) {
             try {
                 result = session.execute(cmd);
+                return result;
             } catch (ConnectionException e) {
                 if (i >= maxAttempts) {
                     log.error("All API keys exhausted!");
