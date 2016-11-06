@@ -20,7 +20,7 @@ public class Starter {
     @Autowired
     private MirkoPosterTask task;
 
-    @Scheduled(cron = "0 */1 * * * *")
+    @Scheduled(cron = "10 */1 * * * *")
 //	@PostConstruct
     public void runScheduledTask() {
         task.run();

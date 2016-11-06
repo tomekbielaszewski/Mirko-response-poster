@@ -16,16 +16,15 @@ public class Sender {
     private RefreshableSession session;
 
     public void send(PlayerResponse playerResponse) {
-        MirkoPostResponse mirkoPostResponse = sendPlayerResponse(playerResponse);
-        playerResponse.setSent(mirkoPostResponse.isSuccess());
+        boolean success = sendPlayerResponse(playerResponse);
+        playerResponse.setSent(success);
     }
 
-    private MirkoPostResponse sendPlayerResponse(PlayerResponse playerResponse) {
+    private boolean sendPlayerResponse(PlayerResponse playerResponse) {
         log.info("Sending message to {}", playerResponse.getReceiver());
         Command sendCommand = getPMSendCommand(playerResponse.getReceiver(), playerResponse.getResponse());
-        String execute = session.execute(sendCommand);
-        Gson gson = new Gson();
-        return gson.fromJson(execute, MirkoPostResponse.class);
+        String mirkoResponse = session.execute(sendCommand);
+        return mirkoResponse.equals("[true]");
     }
 
     private Command getPMSendCommand(String receiver, String response) {
