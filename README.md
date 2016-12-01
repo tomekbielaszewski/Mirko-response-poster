@@ -1,1 +1,1 @@
-# Mirko-response-poster
+# Mirko-response-poster [![Build Status](https://travis-ci.org/tomekbielaszewski/Mirko-response-poster.svg)](https://travis-ci.org/tomekbielaszewski/Mirko-response-poster)
