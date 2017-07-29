@@ -38,6 +38,6 @@ public class MirkoPosterTask implements Runnable {
 
     private void save(List<PlayerResponse> responses) {
         log.info("Saving responses");
-        responseRepository.save(responses);
+        responseRepository.update(responses);
     }
 }
